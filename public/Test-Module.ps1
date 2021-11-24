@@ -1,0 +1,50 @@
+
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID 3341ada7-310e-4cb8-984d-33f641105779
+
+.AUTHOR MichaelDrum
+
+.COMPANYNAME
+
+.COPYRIGHT
+
+.TAGS
+
+.LICENSEURI
+
+.PROJECTURI
+
+.ICONURI
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS
+
+.EXTERNALSCRIPTDEPENDENCIES
+
+.RELEASENOTES
+
+
+.PRIVATEDATA
+
+#> 
+
+
+
+<# 
+
+.DESCRIPTION 
+Test function
+
+#> 
+
+Param()
+
+
+function Test-Module
+{
+    Write-Host "Testing dLogger module"
+}

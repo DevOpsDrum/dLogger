@@ -20,7 +20,5 @@ foreach ($function in $allFunctions)
     }
 }
 
+# exporting functions here is much easier than manually updating psd1 file with functions
 Export-ModuleMember -Function $publicFunctions.BaseName # -Variable @() -Alias @()
-
-#TODO: use Update-ModuleManifest to update manifest file (psd1) with functions to export
-Update-ModuleManifest -Function $publicFunctions.BaseName

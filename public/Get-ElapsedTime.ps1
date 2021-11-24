@@ -22,7 +22,7 @@
 .NOTES
     General notes
 #>
-function Get-ElapsedTimes
+function Get-ElapsedTime
 {
     [Alias("elapsed", "et")]
     [CmdletBinding()]

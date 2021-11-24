@@ -12,16 +12,20 @@ if ($null -eq (Get-Module -ListAvailable -Name InstallModuleFromGitHub)) { Insta
 # install from GitHub
 Install-ModuleFromGitHub -GitHubRepo madrum/dLogger
 ```
-* Import module from clone of repo
+
+* Clone repo and import module
 ```PowerShell
 # clone repo
 cd $home\repos
 git clone https://github.com/madrum/dLogger.git
 
 # import module
-Import-Module -Name .\dLogger -Force -Verbose
+Import-Module -Name .\dLogger -Force -Verbose -noclobber
 # use `-NoClobber` and `-Prefix d` if function names may overlap with others in session
 ```
 
 ## Functions
 TODO:
+
+# Contribute
+[Create PowerShell Module](docs/create-ps-module.md)
