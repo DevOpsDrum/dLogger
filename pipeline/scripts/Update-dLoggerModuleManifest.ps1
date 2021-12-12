@@ -1,4 +1,8 @@
-﻿<#
+﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'unnecessary')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceCloseBrace', '', Justification = 'unnecessary')]
+
+<#
 This script assumes the script file is located two levels deep in the module/repo directory, e.g. ./pipeline/scripts
 Use that assumption to get the path the module directory
 #>

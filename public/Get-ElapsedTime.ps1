@@ -1,4 +1,9 @@
-﻿<#
+﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'unnecessary')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceCloseBrace', '', Justification = 'unnecessary')]
+param() # having param here prevents line above from producing parsing error "UnexpectedAttribute"
+
+<#
 .SYNOPSIS
     Get elapsed time
 .DESCRIPTION
@@ -25,6 +30,7 @@
 function Get-ElapsedTime
 {
     [Alias("elapsed", "et")]
+    [OutputType([String])]
     [CmdletBinding()]
     param(
         [Alias("Reset", "Restart")]

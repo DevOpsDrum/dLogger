@@ -1,3 +1,7 @@
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceCloseBrace', '', Justification = 'unnecessary')]
+param() # having param here prevents line above from producing parsing error "UnexpectedAttribute"
+
 $scriptPath = Split-Path $MyInvocation.MyCommand.Path
 $psModule = $ExecutionContext.SessionState.Module
 $psModuleRoot = $psModule.ModuleBase # can be used in other module scripts
@@ -22,3 +26,4 @@ foreach ($function in $allFunctions)
 
 # exporting functions here is much easier than manually updating psd1 file with functions
 Export-ModuleMember -Function $publicFunctions.BaseName # -Variable @() -Alias @()
+y

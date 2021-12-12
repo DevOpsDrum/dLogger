@@ -1,3 +1,6 @@
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'unnecessary')]
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
+param() # having param here prevents line above from producing parsing error "UnexpectedAttribute"
 
 <#PSScriptInfo
 
@@ -31,20 +34,11 @@
 .PRIVATEDATA
 
 #> 
-
-
-
-<# 
-
-.DESCRIPTION 
-Test function
-
-#> 
-
-Param()
-
-
 function Test-Module
 {
-    Write-Host "Testing dLogger module"
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'not helpful')]
+    [CmdletBinding()]
+    param()
+    
+    Write-Output "Testing dLogger module"
 }
