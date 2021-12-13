@@ -41,7 +41,7 @@ function Get-ElapsedTime
     if ($null -eq $script:startTime)
     {
         $script:startTime = Get-Date
-        Write-Verbose "'`$script:startTime' var not declared, to creating now and setting to current time: $($script:startTime)"
+        Write-Verbose "'`$script:startTime' var not declared yet, so creating now and setting to current time: $($script:startTime)"
     }
     else
     {
