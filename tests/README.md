@@ -22,26 +22,18 @@ Static code analysis using PSScriptAnalyzer [repo and documentation](https://git
 ```PowerShell
 # use PSGallery settings
 # Invoke-ScriptAnalyzer -Path </path/to/module/> -Recurse
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings CodeFormatting
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings CodeFormattingAllman
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings CodeFormattingOTBS
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings CodeFormattingStroustrup
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings PSGallery 
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings ScriptFunctions
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings ScriptingStyle
-Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings ScriptSecurity
-# I don't think CmdletDesign and DSC would be helpful
+Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings ./tests/PSScriptAnalyzerSettings.psd1
 ```
 
-#### Output as JUnit XML
+#### Output as NUnit XML
 When running in a pipeline, it is very helpful to produce output as JUnitXML, as that is the standard unit test report format.
-At this time, the PSScriptAnalyzer module does not have the capability, but the `.\private\Export-NUnitXml.ps1` can produce NUnit XML. 
+The PSScriptAnalyzer module does not export to specific formats, but the `.\private\Export-NUnitXml.ps1` can produce NUnit XML for us. 
 
 ```PowerShell
 # dot source Export-NUnitXML function
-. .\private\Export-NUnitXml.ps1
+. .\tests\Export-NUnitXml.ps1
 # pipe output of script analyzer to Export-NUnitXML function
-$result = Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings PSGallery
+$result = Invoke-ScriptAnalyzer -Path ./ -Recurse -Settings ./tests/PSScriptAnalyzerSettings.psd1
 Export-NUnitXml -ScriptAnalyzerResult $result -Path ./psscriptanalyzer-nunit.xml
 ```
 
@@ -54,7 +46,6 @@ function SuppressMe()
     param()
 
     Write-Verbose -Message "I'm making a difference!"
-
 }
 ```
 

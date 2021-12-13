@@ -1,7 +1,7 @@
-﻿[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'unnecessary')]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
-[Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceCloseBrace', '', Justification = 'unnecessary')]
-param() # having param here prevents line above from producing parsing error "UnexpectedAttribute"
+﻿# [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidTrailingWhitespace', '', Justification = 'unnecessary')]
+# [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSPlaceOpenBrace', '', Justification = 'prefer C# formatting')]
+# [Diagnostics.CodeAnalysis.SuppressMessageAttribut('PSPlaceCloseBrace', '', Justification = 'unnecessary')]
+# param() # having param here prevents line above from producing parsing error "UnexpectedAttribute"
 
 Function Export-NUnitXml
 {
@@ -19,12 +19,12 @@ Function Export-NUnitXml
   [OutputType([System.Xml.XmlDocument])]
   [CmdletBinding()]
   Param (
-    [Parameter(Mandatory, Position = 0)]
+    [Parameter(Mandatory, Position = 0, ValueFromPipeline)]
     [AllowNull()]
-    [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]]$ScriptAnalyzerResult,
+    [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord[]] $ScriptAnalyzerResult,
 
     [Parameter(Mandatory, Position = 1)]
-    [string]$Path
+    [string] $Path
   )
 
   $TotalNumber = If ($ScriptAnalyzerResult) { $ScriptAnalyzerResult.Count -as [string] } Else { '1' }

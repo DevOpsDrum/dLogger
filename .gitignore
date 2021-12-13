@@ -348,4 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# JUnitXML Test Report
 psscriptanalyzer-nunit.xml
