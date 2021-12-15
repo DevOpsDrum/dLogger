@@ -6,6 +6,9 @@ TODO: add stuff
 ## PSScriptAnalyzer
 Static code analysis using PSScriptAnalyzer [repo and documentation](https://github.com/PowerShell/PSScriptAnalyzer)
 
+### Example usage
+This is a [good example](https://cloudlumberjack.com/posts/ado-pr-psscriptanalyzer/) of using PSScriptAnalyzer in an ADO pipeline
+
 ### Installation
 * Install PS module
     ```PowerShell
