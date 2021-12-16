@@ -9,10 +9,12 @@ Static code analysis using PSScriptAnalyzer [repo and documentation](https://git
 ### Example usage
 This is a [good example](https://cloudlumberjack.com/posts/ado-pr-psscriptanalyzer/) of using PSScriptAnalyzer in an ADO pipeline
 
+[Forked repo](https://github.com/madrum/azuredevops-psscriptanalyzer-prcomments) of script and yaml
+
 ### Installation
 * Install PS module
-    ```PowerShell
-    Install-Module -Name PSScriptAnalyzer
+    Install-Module -
+    ```PowerShellName PSScriptAnalyzer
     ```
 * Run test in docker container
     ```sh
