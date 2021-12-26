@@ -48,7 +48,7 @@ $splat = @{
     Description = 'Functions to make logging in scripts a bit easier'
     Copyright= '(c) Michael A. Drum. All rights reserved.'
     CompanyName = 'n/a'
-    ProjectUri = 'https://github.com/madrum/dLogger'
+    ProjectUri = 'https://github.com/DevOpsDrum/dLogger'
     Tags = @('logging', 'logger', 'log', 'logs')
 }
 New-ModuleManifest $splat

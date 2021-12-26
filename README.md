@@ -10,14 +10,14 @@ Install the module and start using the functions.
 # install module to install modules from GitHub: InstallModuleFromGitHub
 if ($null -eq (Get-Module -ListAvailable -Name InstallModuleFromGitHub)) { Install-Module -Name InstallModuleFromGitHub -Force -Verbose; Import-Module -Name InstallModuleFromGitHub; Get-Command -Module InstallModuleFromGitHub}
 # install from GitHub
-Install-ModuleFromGitHub -GitHubRepo madrum/dLogger
+Install-ModuleFromGitHub -GitHubRepo DevOpsDrum/dLogger
 ```
 
 * Clone repo and import module
 ```PowerShell
 # clone repo
 cd $home\repos
-git clone https://github.com/madrum/dLogger.git
+git clone https://github.com/DevOpsDrum/dLogger.git
 
 # import module
 Import-Module -Name .\dLogger -Force -Verbose -noclobber
