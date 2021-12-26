@@ -25,7 +25,10 @@ Import-Module -Name .\dLogger -Force -Verbose -noclobber
 ```
 
 ## Functions
-TODO:
+* `Add-Timestamp`: Add a timestamp to begging of string. This is used when logging and you want to ensure a timestamp is in the message. 
+  * e.g. `Write-Host ("This is a logging message" | Add-Timestamp)`
+  * PS > 2021-12-26 22:11:22.189Z: This is a logging message
+* `Get-ElapsedTime`: TODO:
 
 # Contribute
 [Create PowerShell Module](docs/create-ps-module.md)

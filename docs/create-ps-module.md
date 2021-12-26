@@ -1,9 +1,9 @@
 # Create PowerShell Module
 This is how I created the dLogger PowerShell module.
 
-Reference: [MS documentation](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module-manifest?view=powershell-7.2).
+Reference: [MS documentation](https://docs.microsoft.com/en-us/powershell/scripting/developer/module/how-to-write-a-powershell-module-manifest?view=powershell-7.2)
 
-## Create initial files and folders (psm1)
+## Create initial files and folders
 ---
 Create a few directories and a couple files to get things started. 
 
@@ -16,7 +16,7 @@ New-Item -Name 'tests' -ItemType Directory
 $psm1Contents = @'
 $scriptPath = Split-Path $MyInvocation.MyCommand.Path
 $psModule = $ExecutionContext.SessionState.Module
-$psModuleRoot = $psModule.ModuleBase # can be used in other module scripts
+$psModuleRoot = $psModule.ModuleBase # var can be used in module scripts
 Write-Verbose "PS module root: $psModuleRoot"
 
 # Dot source public/private functions
@@ -40,7 +40,7 @@ Export-ModuleMember -Function $publicFunctions.BaseName # -Variable @() -Alias @
 '@
 $psm1Contents | Out-File 'dLogger.psm1'
 
-# Create module manifest with minimal parameters
+# Create module manifest (*.psd1) with minimal parameters
 $splat = @{
     ModuleVersion = '0.1'
     Path = '.\dLogger.psd1'
@@ -53,30 +53,33 @@ $splat = @{
 }
 New-ModuleManifest $splat
 
-# Import module to to confirm module gets imported successfully
+# Import module to confirm module can be imported successfully
 Import-Module .\dLogger.psd1 -Force -Verbose
 # An alternate way to test module manifest: Test-ModuleManifest dLogger.psd1
 ```
 
-## Test Module and Scripts
-* Test with docker (need to add -v to mount volume and set work dir)
-`docker run -it mcr.microsoft.com/powershell pwsh -c "Install-Module PSScriptAnalyzer -Force; Invoke-ScriptAnalyzer -ScriptDefinition 'gci'"`
-* Run PSScriptAnalyzer on module, which is required to publish to PSGallery
+## Test module and scripts
+* Run PSScriptAnalyzer on module, which is required to publish to PSGallery:  
 `Invoke-ScriptAnalyzer -Path . -Settings PSGallery -Recurse`
-* Run Test-ModuleManifest for modules
+* Run Test-ModuleManifest for modules:  
 `Test-ModuleManifest -Path .\dLogger.psd1`
-* Run Test-ScriptFileInfo for scripts
+* Run Test-ScriptFileInfo for scripts:  
 `Test-ScriptFileInfo`
+* Test with docker:  
+`docker run -it mcr.microsoft.com/powershell pwsh -c "Install-Module PSScriptAnalyzer -Force; Invoke-ScriptAnalyzer -Recurse -Settings PSGallery"`  
+  > todo: add `-v` and proper values to mount current directory as `/work` in image
 
-## Register and publish PSRepository
+## Register and publish to PSRepository
+Publish to a local PSRepository and/or PSGallery.
+
 * [Microsoft documentation](https://docs.microsoft.com/en-us/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package?view=powershell-7.2) on publishing modules and scripts
 * Publish to PSGallery
-Ensure modules and scripts have been tested using: [Test module manifest](#test-module-manifest)
+  > Ensure modules and scripts have been tested using: [Test module and scripts](#test-module-and-scripts)
 ```PowerShell
 # publish module
-Publish-Module -Name <moduleName> -NuGetApiKey <apiKey> -WhatIf -Verbose
+Publish-Module -Name <moduleName> -NuGetApiKey <apiKey> -Verbose -WhatIf
 # publish script
-Publish-Script -Path <scriptPath> -NuGetApiKey <apiKey> -WhatIf -Verbose
+Publish-Script -Path <scriptPath> -NuGetApiKey <apiKey> -Verbose -WhatIf
 ```
   * Get API key [here](https://www.powershellgallery.com/account/apikeys) 
 * Publish to local file share (unlikely)
